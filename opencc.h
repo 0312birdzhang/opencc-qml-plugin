@@ -2,6 +2,7 @@
 #define OPENCC_H
 
 #include <QQuickItem>
+#include <QString>
 #include <opencc/opencc.h>
 
 class OpenCC : public QQuickItem
@@ -9,13 +10,12 @@ class OpenCC : public QQuickItem
   Q_OBJECT
   Q_DISABLE_COPY(OpenCC)
 private:
-  opencc::SimpleConverter* converter_sTtw;
-  opencc::SimpleConverter* converter_twTs;
+  opencc::SimpleConverter* converter;
 public:
   OpenCC(QQuickItem *parent = nullptr);
   ~OpenCC();
+  Q_INVOKABLE void chooseMode(QString mode);
   Q_INVOKABLE QString convert(const QString qstr) const;
-  Q_INVOKABLE QString convert2s(const QString qstr) const;
 
 };
 
